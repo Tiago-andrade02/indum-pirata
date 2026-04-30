@@ -71,7 +71,7 @@
     {
     nombre: "Mochila Gajos",
     categoria: "accesorios",
-    precio: 45000, // ajustá el precio real
+    precio: 42000, // ajustá el precio real
     imagenes: [
         "img/mochila1.jpg",
         "img/mochila2.jpg"
@@ -81,7 +81,7 @@
 {
     nombre: "Neceser Gajos",
     categoria: "accesorios",
-    precio: 22000, // ajustá el precio real
+    precio: 32000, // ajustá el precio real
     imagenes: [
         "img/neceser1.jpg",
         "img/neceser2.jpg"
