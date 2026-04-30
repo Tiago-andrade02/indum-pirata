@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= HERO CARRUSEL INICIO ================= */
 
@@ -14,11 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3500);
     }
 
-    /* ================= PRODUCTOS ================= */
-
-   const productos = [
+    const productos = [
     {
         nombre: "Buzo Deportivo",
+        categoria: "indumentaria",
         precio: 68000,
         imagenes: [
             "img/buzo1.jpg",
@@ -29,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
         nombre: "Chomba Deportiva",
+        categoria: "indumentaria",
         precio: 48000,
         imagenes: [
             "img/chomba1.jpg",
@@ -38,7 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
         linkImagen: "https://indumpirata.netlify.app/img/chomba1.jpg"
     },
     {
+        nombre: "Conjunto de Entrenamiento",
+        categoria: "indumentaria",
+        precio: 58000,
+        imagenes: [
+            "img/conjunto1.jpg",
+            "img/conjunto2.jpg"
+        ],
+        linkImagen: "https://indumpirata.netlify.app/img/conjunto1.jpg"
+    },
+    {
         nombre: "Medias Antideslizantes",
+        categoria: "accesorios",
         precio: 20000,
         imagenes: [
             "img/medias1.jpg",
@@ -48,39 +59,50 @@ document.addEventListener("DOMContentLoaded", () => {
         linkImagen: "https://indumpirata.netlify.app/img/medias1.jpg"
     },
     {
-        nombre: "Conjunto de Entrenamiento",
-        precio: 58000,
-        imagenes: [
-            "img/conjunto1.jpg",
-            "img/conjunto2.jpg"
-        ],
-        linkImagen: "https://indumpirata.netlify.app/img/conjunto1.jpg"
-    },
-    {
         nombre: "Cuello Térmico",
+        categoria: "accesorios",
         precio: 16000,
         imagenes: [
             "img/cuello1.jpg",
             "img/cuello2.jpg"
         ],
         linkImagen: "https://indumpirata.netlify.app/img/cuello1.jpg"
-    }
+    },
+    {
+    nombre: "Mochila Gajos",
+    categoria: "accesorios",
+    precio: 45000, // ajustá el precio real
+    imagenes: [
+        "img/mochila1.jpg",
+        "img/mochila2.jpg"
+    ],
+    linkImagen: "https://indumpirata.netlify.app/img/mochila1.jpg"
+},
+{
+    nombre: "Neceser Gajos",
+    categoria: "accesorios",
+    precio: 22000, // ajustá el precio real
+    imagenes: [
+        "img/neceser1.jpg",
+        "img/neceser2.jpg"
+    ],
+    linkImagen: "https://indumpirata.netlify.app/img/neceser1.jpg"
+}
 ];
 
-const contenedor = document.querySelector(".grid");
+const gridIndumentaria = document.getElementById("grid-indumentaria");
+const gridAccesorios = document.getElementById("grid-accesorios");
 
-    if (!contenedor) return;
+if (!gridIndumentaria && !gridAccesorios) return;
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("imgGrande");
+const closeBtn = document.querySelector(".close");
+const nextBtn = document.querySelector(".modal-next");
+const prevBtn = document.querySelector(".modal-prev");
 
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("imgGrande");
-    const closeBtn = document.querySelector(".close");
-    const nextBtn = document.querySelector(".modal-next");
-    const prevBtn = document.querySelector(".modal-prev");
-
-    let imagenesActuales = [];
-    let indexActual = 0;
-
-    productos.forEach(producto => {
+let imagenesActuales = [];
+let indexActual = 0;
+productos.forEach(producto => {
 
         const card = document.createElement("div");
         card.classList.add("card");
@@ -143,7 +165,11 @@ Foto: ${producto.linkImagen}`
             modalImg.src = imagenesActuales[indexActual];
         });
 
-        contenedor.appendChild(card);
+       if (producto.categoria === "indumentaria") {
+    gridIndumentaria.appendChild(card);
+} else {
+    gridAccesorios.appendChild(card);
+}
     });
 
     /* ================= MODAL ================= */
